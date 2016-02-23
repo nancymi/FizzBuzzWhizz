@@ -12,6 +12,7 @@ function fizz_buzz_whizz(spec_num) {
   if (isLegal(spec_num)) {
     special_num = spec_num;
     answer = numberOff(NUM);
+    return answer;
   } else {
     //TODO 特殊数字不合格抛异常
   }
@@ -30,7 +31,7 @@ function numberOff(stu_num) {
   for (var i = 1; i <= stu_num; i ++) {
     answer[i-1] = specialNum(i);
   }
-  return answer
+  return answer;
 }
 
 function specialNum(num) {
@@ -67,12 +68,13 @@ function isRule2(num) {
 }
 
 function isRule3(num) {
+  var i = num % 10;
   while(num > 0) {
-    var i = num % 10;
     if (i == special_num[0]) {
       return FIZZ;
     }
-    num /= 10;
+    num = parseInt(num/10);
+    i = num % 10;
   }
   return "";
 }
