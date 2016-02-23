@@ -4,12 +4,12 @@ var FIZZ = "Fizz";
 var BUZZ = "Buzz";
 var WHIZZ = "Whizz";
 
-var NUM = 15;
+var NUM = 100;
 
-var answer;
+var answer = [];
 
 function fizz_buzz_whizz(spec_num) {
-  if (!(isLegal(spec_num))) {
+  if (isLegal(spec_num)) {
     special_num = spec_num;
     answer = numberOff(NUM);
   } else {
@@ -19,7 +19,7 @@ function fizz_buzz_whizz(spec_num) {
 
 function isLegal(spec_num) {
   for (var i = 0; i < spec_num.length; i ++) {
-    if (spec_num[i] < 0 || spec_num[i]%10 != 0)
+    if (spec_num[i] < 0 || spec_num[i] >= 10)
       return false;
   }
   return true;
@@ -28,9 +28,9 @@ function isLegal(spec_num) {
 function numberOff(stu_num) {
   var answer = [];
   for (var i = 1; i <= stu_num; i ++) {
-    answer[i-1] = specialNum(stu_num);
+    answer[i-1] = specialNum(i);
   }
-  return answer;
+  return answer
 }
 
 function specialNum(num) {
@@ -67,9 +67,12 @@ function isRule2(num) {
 }
 
 function isRule3(num) {
-  for (var i = num%10; num >= 0; num /= 10, i=num%10) {
-    if (i == special_num[0]) 
+  while(num > 0) {
+    var i = num % 10;
+    if (i == special_num[0]) {
       return FIZZ;
+    }
+    num /= 10;
   }
   return "";
 }
