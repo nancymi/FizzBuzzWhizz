@@ -6,12 +6,14 @@ var WHIZZ = "Whizz";
 
 var NUM = 15;
 
+var answer;
+
 function fizz_buzz_whizz(spec_num) {
   if (!(isLegal(spec_num))) {
     special_num = spec_num;
-    numberOff(NUM);
+    answer = numberOff(NUM);
   } else {
-
+    //TODO 特殊数字不合格抛异常
   }
 }
 
@@ -28,6 +30,7 @@ function numberOff(stu_num) {
   for (var i = 1; i <= stu_num; i ++) {
     answer[i-1] = specialNum(stu_num);
   }
+  return answer;
 }
 
 function specialNum(num) {
@@ -42,11 +45,11 @@ function specialNum(num) {
 }
 
 function isRule1(num) {
-  if (num % spec_num[0] == 0)
+  if (num % special_num[0] == 0)
     return FIZZ;
-  else if (num % spec_num[1] == 0)
+  else if (num % special_num[1] == 0)
     return BUZZ;
-  else if (num % spec_num[2] == 0)
+  else if (num % special_num[2] == 0)
     return WHIZZ;
   else 
     return "";
@@ -54,18 +57,18 @@ function isRule1(num) {
 
 function isRule2(num) {
   var word = "";
-  if (num % spec_num[0] == 0) 
+  if (num % special_num[0] == 0) 
     word += FIZZ;
-  if (num % spec_num[1] == 0)
+  if (num % special_num[1] == 0)
     word += BUZZ;
-  if (num % spec_num[2] == 0)
+  if (num % special_num[2] == 0)
     word += WHIZZ;
   return word;
 }
 
 function isRule3(num) {
-  for (var i = num%10; num > 0; num /= 10) {
-    if (i == spec_num[0]) 
+  for (var i = num%10; num >= 0; num /= 10, i=num%10) {
+    if (i == special_num[0]) 
       return FIZZ;
   }
   return "";
